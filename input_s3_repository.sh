@@ -20,8 +20,7 @@ echo "--> The bucket name = $bucket"
 read -p "--> Enter the client [cloudians3]: " client
 client=${client:-cloudians3}
 echo "--> The client name = $client"
-read -p "--> Enter the endpoint for $client: " endpoint
-endpoint=${endpoint:-s3-region2.iphilsanity.com}
+read -p "--> Enter the endpoint for $client [s3-region.fqdn.com]: " endpoint
 echo "--> The endpoint = $endpoint"
 read -p "--> Enter the Protocol [https]: " protocol
 protocol=${protocol:-https}
@@ -29,7 +28,6 @@ echo "--> The protocol = $protocol"
 read -p "--> Enter the base path for $endpoint/$bucket: " base_path
 echo "--> The base_path = $base_path"
 read -p "--> Enter the FQDN of the Elasticsearch node that will register $repository_name to $endpoint/$bucket/$base_path : " fqdn
-fqdn=${fqdn:-esnode1}
 echo "--> The FQDN = $fqdn"
 
 curl -u $user:$password -X PUT "$fqdn:9200/_snapshot/$repository_name?pretty" -H 'Content-Type: application/json' -d'
